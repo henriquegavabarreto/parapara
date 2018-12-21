@@ -74,6 +74,7 @@ let SelectedSong = new Phaser.Class({
       restart.on('pointerdown',function(pointer){
         restart.alpha = 0;
         restart.disableInteractive();
+        startCapture();
         song.play();
         hitCount = 0;
         missCount = 0;
