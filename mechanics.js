@@ -1,32 +1,3 @@
-//Posenet rules
-let rules = {
- imageScaleFactor: 0.5,
- outputStride: 16,
- flipHorizontal: false,
- minConfidence: 0.1,
- maxPoseDetections: 5,
- scoreThreshold: 0.5,
- nmsRadius: 20,
- detectionType: 'single',
- multiplier: 0.75,
-}
-
-//Setting up posenet
-let poseNet;
-let poses = [];
-
-function modelReady(){
-  console.log("Model Ready!");
-  posenetReady = true;
-}
-
-function startPoseNet(){
-  poseNet = ml5.poseNet(video,rules,modelReady);
-  poseNet.on('pose', function(results){
-    poses = results;
-  });
-}
-
 //Simple place check that lights up the rings when hands are in place
 
 function placeCheck(){

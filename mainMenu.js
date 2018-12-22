@@ -25,7 +25,7 @@ let MainMenu = new Phaser.Class({
       })
 
       this.add.text(350, 150, 'This is just a test. Please support eurobeat artists.',{ fontFamily: 'Arial', fontSize: 30, color: '#ffffff', });
-
+      this.add.text(350, 200, 'Best if played in google chrome.',{ fontFamily: 'Arial', fontSize: 30, color: '#ffffff', })
     }
 
 });
