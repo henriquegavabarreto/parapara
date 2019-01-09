@@ -7,6 +7,7 @@ var config = {
     width: generalWidth,
     height: generalHeight,
     backgroundColor: '#000000',
+    fps: { min: 30, target: 60 },
     scene: [ MainMenu, SongSelect, SelectedSong]
 };
 

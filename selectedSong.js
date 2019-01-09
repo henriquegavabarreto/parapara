@@ -22,8 +22,8 @@ let SelectedSong = new Phaser.Class({
 
     preload: function ()
     {
-      startCapture();
-      startPoseNet(rules);
+      //Start button
+      this.load.image('start', 'assets/start.png')
       //Restart button
       this.load.image('restart','assets/restart.png');
       //Visual Cues
@@ -38,6 +38,18 @@ let SelectedSong = new Phaser.Class({
 
     create: function ()
     {
+      //Add song
+      song = this.sound.add('thatsAmore');
+
+      let startButton = this.add.sprite(generalWidth/2, generalHeight/2, 'start').setInteractive();
+
+      startButton.on('pointerdown',function(pointer){
+        startCapture();
+        startPoseNet(rules);
+        startButton.alpha = 0;
+        startButton.disableInteractive();
+        setTimeout(function () {song.play() }, 3000)
+      })
       //DanceChart JSON request
       var request = new XMLHttpRequest();
       request.open("GET","songs/thatsamore/thatsamore.json");
@@ -57,9 +69,6 @@ let SelectedSong = new Phaser.Class({
       ringGroup = this.add.group();
       group = this.add.group({key: 'ring', frame: 0, repeat: 8, visible: true, setAlpha: 0.5});
       alignInGrid();
-
-      //Add song
-      song = this.sound.add('thatsAmore');
 
       //Song GUI setup
       //guiSetup();
@@ -81,15 +90,12 @@ let SelectedSong = new Phaser.Class({
         hitTxt.text = 'HIT: ' + hitCount;
         missTxt.text = 'MISS: ' + missCount;
       })
+
+      //Error text
+      errorText = this.add.text(300, 300, '',{ fontFamily: 'Arial', fontSize: 30, color: '#00ff00' });
     },
 
     update: function (){
-      //Play Song
-      if(posenetReady === true && danceChartLoaded === true){
-        song.play();
-        posenetReady = false;
-      }
-
       //Clear graphics and get current beat for sync purposes
       graphics.clear();
       songManager.getCurrentBeat();
@@ -98,7 +104,7 @@ let SelectedSong = new Phaser.Class({
       //spawn rings according to the song position and Test if the hands are
       //in the place the danceChart say they're supposed to be
       if(danceChartLoaded === true){
-        placeCheck();
+        //placeCheck();
 
         cueSpawn();
         movementTests();

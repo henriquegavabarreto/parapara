@@ -3,6 +3,7 @@ let danceChartLoaded = false;
 let rightHandTxt;
 let leftHandTxt;
 let ringGroup;
+let errorText;
 
 let gui;
 let song;
