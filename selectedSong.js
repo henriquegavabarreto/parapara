@@ -45,10 +45,9 @@ let SelectedSong = new Phaser.Class({
 
       startButton.on('pointerdown',function(pointer){
         startCapture();
-        startPoseNet(rules);
+        startPoseNet();
         startButton.alpha = 0;
         startButton.disableInteractive();
-        setTimeout(function () {song.play() }, 3000)
       })
       //DanceChart JSON request
       var request = new XMLHttpRequest();

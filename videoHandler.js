@@ -7,7 +7,7 @@ let poses = [];
 
 function modelReady(){
   console.log("Model Ready!");
-  posenetReady = true;
+  song.play()
 }
 
 function startPoseNet(){
@@ -89,7 +89,6 @@ function startCapture(){
       video.play();
       video.width = 1280/3
       video.height = 720/3
-      console.log(video);
     }
   })
   .catch(function(err){

@@ -1,4 +1,3 @@
-let posenetReady = false;
 let danceChartLoaded = false;
 let rightHandTxt;
 let leftHandTxt;
